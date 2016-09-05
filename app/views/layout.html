@@ -1,0 +1,89 @@
+<div>{{test}}</div>
+
+<!---->
+<style type="text/css">
+  .grid1 {
+    background: #c6ecf1;
+    width: 100%;
+    height: 300px;
+  }
+
+  .grid-stack-item-content {
+    color: #2c3e50;
+    text-align: center;
+    border: 1px dashed slategray;
+  }
+</style>
+
+<!--<div>-->
+<!--<h1>Float grid demo</h1>-->
+<!--<a class="btn btn-default" id="add-new-widget" href="#">Add Widget</a>-->
+<!--</div>-->
+<!--<div class="grid-stack">-->
+<!--</div>-->
+
+<div class="container-fluid">
+  <echarts id="test" option="layout.receivedOpOptions" height="400px"></echarts>
+
+  <h1>gridstack-angular demo</h1>
+  <p>{{widgets}}</p>
+  <div>
+    <a class="btn btn-primary" ng-click="addWidget()">Add Widget</a>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div gridstack class="grid-stack grid1" options="options" on-change="onChange(event,items)"
+           on-drag-start="onDragStart(event,ui)" on-drag-stop="onDragStop(event,ui)"
+           on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
+        <div gridstack-item ng-repeat="w in widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
+             gs-item-width="w.width" gs-item-height="w.height" gs-item-autopos="1" on-item-added="onItemAdded(item)"
+             on-item-removed="onItemRemoved(item)">
+
+          <div class="grid-stack-item-content">
+            <a class="btn btn-primary" ng-click="removeWidget(w)">remove</a>
+            여기에 그래프가 들어갈예정입니다. <echarts id="cpuUsage" option="layout.receivedOpOptions" height="400px"></echarts>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<script type="text/javascript">-->
+<!--$(function () {-->
+<!--var options = {-->
+<!--cellHeight: 80,-->
+<!--verticalMargin: 10,-->
+<!--};-->
+<!--$('.grid-stack').gridstack(options);-->
+
+<!--new function () {-->
+<!--this.items = [-->
+<!--{x: 0, y: 0, width: 2, height: 2},-->
+<!--{x: 3, y: 1, width: 1, height: 2},-->
+<!--{x: 4, y: 1, width: 1, height: 1},-->
+<!--{x: 2, y: 3, width: 3, height: 1},-->
+<!--{x: 2, y: 5, width: 1, height: 1}-->
+<!--];-->
+
+<!--this.grid = $('.grid-stack').data('gridstack');-->
+
+<!--this.addNewWidget = function () {-->
+<!--var node = this.items.pop() || {-->
+<!--x: 12 * Math.random(),-->
+<!--y: 5 * Math.random(),-->
+<!--width: 1 + 3 * Math.random(),-->
+<!--height: 1 + 3 * Math.random()-->
+<!--};-->
+<!--this.grid.addWidget($('<div><div class="grid-stack-item-content" /><div/>'),-->
+<!--node.x, node.y, node.width, node.height);-->
+<!--return false;-->
+<!--}.bind(this);-->
+
+<!--$('#add-new-widget').click(this.addNewWidget);-->
+<!--};-->
+<!--});-->
+<!--</script>-->
+
